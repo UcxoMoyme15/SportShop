@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+SportShop - Add Product
+{% endblock %}
+
+{{ form }}
+
+{% block body %}
+<div class="container-md my-5">
+    <form method="post" enctype="multipart/form-data">
+        {% for errors in form.errors.values() %}
+        <div class="alert alert-danger">
+            {% for error in errors %}
+            * {{ error }}<br>
+            {% endfor %}
+        </div>
+        {% endfor %}
+        <center>
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.img.label.text }}: {{ form.img(accept="jpg,.png") }}
+            </div>
+            <div>
+                {{ form.name(placeholder=form.name.label.text) }}
+            </div>
+            <div class="mt-2">
+                {{ form.price(placeholder=form.price.label.text) }}
+            </div>
+            <br>
+            {{ form.submit }}
+        </center>
+    </form>
+</div>
+{% endblock %}

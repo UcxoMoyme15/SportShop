@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+SportShop
+{% endblock %}
+
+{% block body %}
+<br>
+<img width="1200" height="400" src="https://www.coruba.co.uk/wp-content/uploads/rubber-sports.jpg"
+     class="d-block mx-5" alt="...">
+<br>
+
+<div class="row row-cols-1 row-cols-md-3 g-4 mx-5">
+    {% for product in products %}
+    <div class="col">
+        <div class="card">
+            <img height="250" src="/static/{{ product['img'] }}" class="card-img=top" alt="...">
+            <div class="card-body">
+                <h4 class="card-title">{{ product['name'] }}</h4>
+                <h5 class="card-text">{{ product['price'] }} $</h5>
+                <a href="/product/{{ product['id'] }}" class="btn btn-warning">Details</a>
+                {% if role == "Admin" %}
+                <a href="/delete_product/{{ product['id'] }}" class="btn btn-danger">Delete</a>
+                <a href="/edit_product/{{ product['id'] }}" class="btn btn-info">Edit</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block body %}
+<br>
+<div class="container">
+    <center>
+        <img height="250" src="/static/{{ product['img'] }}">
+        <div class="row">
+            <center>
+                <h4>Name: {{ product['name'] }}</h4>
+                <h4>Price: {{ product['price'] }} $</h4>
+            </center>
+        </div>
+    </center>
+</div>
+{% endblock %}

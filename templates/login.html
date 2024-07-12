@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+SportShop - Log In
+{% endblock %}
+
+{{ form }}
+
+{% block body %}
+<div class="container-md my-5">
+    <center>
+        <form method="post">
+            {% for errors in form.errors.values() %}
+            <div class="alert alert-danger">
+                {% for error in errors %}
+                * {{ error }}<br>
+                {% endfor %}
+            </div>
+            {% endfor %}
+            <h1>Log In</h1>
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.username(placeholder=form.username.label.text) }}
+            </div>
+            <div class="mt-2">
+                {{ form.password(placeholder=form.password.label.text) }}
+            </div>
+            <div class="mt-2">
+                <button>Log In</button>
+            </div>
+            <span>Don't have an account? <a href="/register">Register</a></span>
+        </form>
+    </center>
+</div>
+{% endblock %}

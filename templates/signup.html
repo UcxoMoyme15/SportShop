@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+SportShop - Sign Up
+{% endblock %}
+
+{{ form }}
+
+{% block body %}
+<div class="container-md my-5">
+    <form method="post">
+        {% for errors in form.errors.values() %}
+        <div class="alert alert-danger">
+            {% for error in errors %}
+            * {{ error }}<br>
+            {% endfor %}
+        </div>
+        {% endfor %}
+        <center>
+            <h1>Sign Up</h1>
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.username(placeholder=form.username.label.text) }}
+            </div>
+            <div class="mt-2">
+                {{ form.password(placeholder=form.password.label.text) }}
+            </div>
+            <div class="mt-2">
+                {{ form.repeat_password(placeholder=form.repeat_password.label.text) }}
+            </div>
+            <div class="mt-2">
+                {{ form.email(placeholder=form.email.label.text) }}
+            </div>
+            <br>
+            {{ form.submit }}
+            <br><br>
+            <h6>Already have an account?</h6>
+            <a href="/login">Log In</a>
+        </center>
+    </form>
+</div>
+{% endblock %}
